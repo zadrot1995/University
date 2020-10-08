@@ -6,10 +6,10 @@ namespace University.Domain.Entities
     {
         public int Id { get; set; }
 
-        public int StudentId { get; set; }
+      //  public int StudentId { get; set; }
         public Student Student { get; set; }
 
-        public int GroupSubjectId { get; set; }
+      //  public int GroupSubjectId { get; set; }
         public GroupSubject GroupSubject { get; set; }
 
         //Modules marks
@@ -32,8 +32,8 @@ namespace University.Domain.Entities
 
         //Semester mark
         public int CO { get; set;  }  // = EO != 0 ? EO : CMO
-        public EKTSScale EKTSScale { get; set; }
-        public NationalScale NationalScale { get; set; }
+     //   public EKTSScale EKTSScale { get; set; }
+    //    public NationalScale NationalScale { get; set; }
 
     }
 }

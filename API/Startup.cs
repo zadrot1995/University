@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using University.Infrastructure;
+using University.Domain;
 
 namespace API
 {
@@ -28,6 +28,9 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
+
+            Console.WriteLine(connection);
+
             services.AddDbContext<UniversityIdentityDbContext>(options =>
                 options.UseSqlServer(connection));
             services.AddControllers();
