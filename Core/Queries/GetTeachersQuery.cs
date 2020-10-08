@@ -5,9 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Mapster;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using University.Core.ResponseModels;
-using University.Infrastructure;
+using University.Domain;
 
 namespace University.Core.Queries
 {

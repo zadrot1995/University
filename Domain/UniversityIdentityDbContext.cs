@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using University.Domain.Entities;
 
-namespace University.Infrastructure
+namespace University.Domain
 {
     public class UniversityIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public UniversityIdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options)
+        public UniversityIdentityDbContext(DbContextOptions<UniversityIdentityDbContext> options) : base(options)
         {
         }
 
@@ -27,5 +27,7 @@ namespace University.Infrastructure
         public DbSet<StudentDisciplineMark> studentDisciplineMarks { get; set; }
 
         public DbSet<Teacher> Teachers { get; set; }
+
     }
+
 }
