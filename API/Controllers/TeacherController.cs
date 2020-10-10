@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Commands;
 using Core.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -35,6 +36,26 @@ namespace University.Api.Controllers
 
             var query = new GetTeachersByIdQuery(teacherId);
             var result = await mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateTeacherAsync([FromBody] CreateTeacherCommand command)
+        {
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpDelete("{teacherId}")]
+        public async Task<IActionResult> DeleteTeacherAsync(int teacherId)
+        {
+            DeleteTeacherCommand command = new DeleteTeacherCommand { Id = teacherId };
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+        [HttpPut("{teacherId}")]
+        public async Task<IActionResult> UpdateTeacherAsync(int teacherId, [FromBody] UpdateTeacherCommand command)
+        {
+            command.Id = teacherId;
+            var result = await mediator.Send(command);
             return Ok(result);
         }
     }
