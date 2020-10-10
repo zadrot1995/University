@@ -12,7 +12,7 @@ using University.Domain.Entities;
 
 namespace Core.Handlers
 {
-    class GetAllTeachersHandler : IRequestHandler<GetAllTeachersQuery, List<Teacher>>
+    class GetAllTeachersHandler : IRequestHandler<GetAllTeacherQuery, List<Teacher>>
     {
         private readonly UniversityIdentityDbContext dbContext;
 
@@ -21,7 +21,7 @@ namespace Core.Handlers
             this.dbContext = dbContext;
         }
 
-        public async Task<List<Teacher>> Handle(GetAllTeachersQuery request, CancellationToken cancellationToken)
+        public async Task<List<Teacher>> Handle(GetAllTeacherQuery request, CancellationToken cancellationToken)
         {
             return await dbContext.Teachers.ToListAsync();
         }

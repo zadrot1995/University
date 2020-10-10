@@ -24,7 +24,16 @@ namespace University.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] int page = 0, [FromQuery] int size = Constants.PageSize)
         {
-            var query = new GetAllTeachersQuery();
+            var query = new GetAllTeacherQuery();
+            var result = await mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("{teacherId}")]
+        public async Task<IActionResult> GetTeacherByIdAsync(int teacherId)
+        {
+
+            var query = new GetTeachersByIdQuery(teacherId);
             var result = await mediator.Send(query);
             return Ok(result);
         }

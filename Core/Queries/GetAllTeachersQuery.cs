@@ -6,7 +6,7 @@ using University.Domain.Entities;
 
 namespace Core.Queries
 {
-    public class GetAllTeachersQuery : IRequest<List<Teacher>>
+    public class GetAllTeacherQuery : IRequest<List<Teacher>>
     {
     }
 }
