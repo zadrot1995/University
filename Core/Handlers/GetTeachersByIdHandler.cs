@@ -9,7 +9,7 @@ using University.Domain.Entities;
 
 namespace Core.Handlers
 {
-    public class GetTeachersByIdHandler : IRequestHandler<GetTeachersByIdQuery, Teacher>
+    public class GetTeachersByIdHandler : IRequestHandler<GetTeacherByIdQuery, Teacher>
     {
         private readonly UniversityIdentityDbContext _context;
 
@@ -18,7 +18,7 @@ namespace Core.Handlers
             _context = dbContext;
         }
 
-        public async Task<Teacher> Handle(GetTeachersByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Teacher> Handle(GetTeacherByIdQuery request, CancellationToken cancellationToken)
         {
              var teacher = await _context.Teachers.Where(t => t.Id == request.Id).FirstOrDefaultAsync();
             return teacher;
