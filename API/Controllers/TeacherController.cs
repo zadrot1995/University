@@ -38,7 +38,7 @@ namespace University.Api.Controllers
         public async Task<IActionResult> GetTeacherByIdAsync(int teacherId)
         {
 
-            var query = new GetTeachersByIdQuery(teacherId);
+            var query = new GetTeacherByIdQuery(teacherId);
             var result = await mediator.Send(query);
             return Ok(result);
         }

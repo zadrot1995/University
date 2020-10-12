@@ -3,9 +3,9 @@ using University.Domain.Entities;
 
 namespace Core.Queries
 {
-    public class GetTeachersByIdQuery : IRequest<Teacher>
+    public class GetTeacherByIdQuery : IRequest<Teacher>
     {
-        public GetTeachersByIdQuery(int id)
+        public GetTeacherByIdQuery(int id)
         {
             Id = id;
         }
