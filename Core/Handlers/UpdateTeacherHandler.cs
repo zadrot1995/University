@@ -1,32 +1,29 @@
-﻿using Core.Commands;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Core.Commands;
+using MediatR;
 using University.Domain;
 using University.Domain.Entities;
 
 namespace Core.Handlers
 {
-    class UpdateTeacherHandler : IRequestHandler<UpdateTeacherCommand, Teacher>
+    public class UpdateTeacherHandler : IRequestHandler<UpdateTeacherCommand, Teacher>
     {
-        UniversityIdentityDbContext DbContext;
+        private readonly UniversityIdentityDbContext _context;
 
         public UpdateTeacherHandler(UniversityIdentityDbContext dbContext)
         {
-            DbContext = dbContext;
+            _context = dbContext;
         }
 
         public async Task<Teacher> Handle(UpdateTeacherCommand request, CancellationToken cancellationToken)
         {
             
-            Teacher teacher = DbContext.Teachers.Where(t => t.Id == request.Id).FirstOrDefault();
+            Teacher teacher = _context.Teachers.Where(t => t.Id == request.Id).FirstOrDefault();
             teacher.FullName = request.FullName;
             teacher.TeachingPositionType = request.TeachingPositionType;
-            await DbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return teacher;
         }
     }

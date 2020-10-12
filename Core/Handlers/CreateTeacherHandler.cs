@@ -1,22 +1,19 @@
-﻿using Core.Commands;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Core.Commands;
+using MediatR;
 using University.Domain;
 using University.Domain.Entities;
 
 namespace Core.Handlers
 {
-    class CreateTeacherHandler : IRequestHandler<CreateTeacherCommand, Teacher>
+    public class CreateTeacherHandler : IRequestHandler<CreateTeacherCommand, Teacher>
     {
-        UniversityIdentityDbContext DbContext;
+        private readonly UniversityIdentityDbContext _context;
 
         public CreateTeacherHandler(UniversityIdentityDbContext dbContext)
         {
-            DbContext = dbContext;
+            _context = dbContext;
         }
 
         public async Task<Teacher> Handle(CreateTeacherCommand request, CancellationToken cancellationToken)
@@ -26,8 +23,8 @@ namespace Core.Handlers
                 FullName = request.FullName,
                 TeachingPositionType = request.TeachingPositionType
             };
-            await DbContext.Teachers.AddAsync(teacher);
-            await DbContext.SaveChangesAsync();
+            await _context.Teachers.AddAsync(teacher);
+            await _context.SaveChangesAsync();
             return teacher;
         }
     }

@@ -25,7 +25,11 @@ namespace University.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] int page = 0, [FromQuery] int size = Constants.PageSize)
         {
-            var query = new GetAllTeacherQuery();
+            var query = new GetAllTeacherQuery
+            {
+                Page = page,
+                Size = size
+            };
             var result = await mediator.Send(query);
             return Ok(result);
         }
@@ -38,19 +42,25 @@ namespace University.Api.Controllers
             var result = await mediator.Send(query);
             return Ok(result);
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateTeacherAsync([FromBody] CreateTeacherCommand command)
         {
             var result = await mediator.Send(command);
             return Ok(result);
         }
+
         [HttpDelete("{teacherId}")]
         public async Task<IActionResult> DeleteTeacherAsync(int teacherId)
         {
-            DeleteTeacherCommand command = new DeleteTeacherCommand { Id = teacherId };
-            var result = await mediator.Send(command);
-            return Ok(result);
+            var command = new DeleteTeacherCommand
+            {
+                Id = teacherId
+            };
+            await mediator.Send(command);
+            return NoContent();
         }
+
         [HttpPut("{teacherId}")]
         public async Task<IActionResult> UpdateTeacherAsync(int teacherId, [FromBody] UpdateTeacherCommand command)
         {
