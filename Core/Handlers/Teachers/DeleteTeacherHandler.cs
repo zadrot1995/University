@@ -6,25 +6,23 @@ using MediatR;
 using University.Domain;
 using University.Domain.Entities;
 
-namespace Core.Handlers
+namespace Core.Handlers.Theachers
 {
-    public class UpdateTeacherHandler : IRequestHandler<UpdateTeacherCommand, Teacher>
+    public class DeleteTeacherHandler : IRequestHandler<DeleteTeacherCommand>
     {
         private readonly UniversityIdentityDbContext _context;
 
-        public UpdateTeacherHandler(UniversityIdentityDbContext dbContext)
+        public DeleteTeacherHandler(UniversityIdentityDbContext dbContext)
         {
             _context = dbContext;
         }
 
-        public async Task<Teacher> Handle(UpdateTeacherCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteTeacherCommand request, CancellationToken cancellationToken)
         {
-            
             Teacher teacher = _context.Teachers.Where(t => t.Id == request.Id).FirstOrDefault();
-            teacher.FullName = request.FullName;
-            teacher.TeachingPositionType = request.TeachingPositionType;
+            _context.Teachers.Remove(teacher);
             await _context.SaveChangesAsync();
-            return teacher;
+            return Unit.Value;
         }
     }
 }

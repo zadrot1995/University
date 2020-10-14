@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using University.Domain;
 using University.Domain.Entities;
 
-namespace Core.Handlers
+namespace Core.Handlers.Theachers
 {
     public class GetAllTeachersHandler : IRequestHandler<GetAllTeacherQuery, List<Teacher>>
     {

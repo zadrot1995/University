@@ -33,8 +33,8 @@ namespace API
 
             services.AddDbContext<UniversityIdentityDbContext>(options =>
                 options.UseSqlServer(connection));
-            services.AddControllers();
-
+            services.AddControllers().AddNewtonsoftJson(options =>
+               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             var assembly = AppDomain.CurrentDomain.Load("Core");
             services.AddMediatR(assembly);
         }

@@ -5,7 +5,7 @@ using MediatR;
 using University.Domain;
 using University.Domain.Entities;
 
-namespace Core.Handlers
+namespace Core.Handlers.Theachers
 {
     public class CreateTeacherHandler : IRequestHandler<CreateTeacherCommand, Teacher>
     {
