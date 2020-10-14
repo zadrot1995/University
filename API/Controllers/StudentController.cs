@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Commands.Students;
 using Core.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,44 @@ namespace API.Controllers
                 Size = size
             };
             var result = await mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("{studentId}")]
+        public async Task<IActionResult> GetStudentByIdAsync(int studentId)
+        {
+            var query = new GetStudentByIdQuery(studentId);
+            var result = await mediator.Send(query);
+            if(result==null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateStudentAsync([FromBody] CreateStudentCommand command)
+        {
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpDelete("{studentId}")]
+        public async Task<IActionResult> DeleteStudentAsync(int studentId)
+        {
+            var command = new DeleteStudentCommand
+            {
+                Id = studentId
+            };
+            await mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpPut("{studentId}")]
+        public async Task<IActionResult> UpdateStudentAsync(int studentId, [FromBody] UpdateStudentCommand command)
+        {
+            command.Id = studentId;
+            var result = await mediator.Send(command);
             return Ok(result);
         }
     }
