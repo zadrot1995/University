@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Case Sensitive -->
+<appsettings>
+  <ApiJson>https://nltuuniversity.azurewebsites.net/_doc/api/./v1/swagger.json</ApiJson>
+</appsettings>

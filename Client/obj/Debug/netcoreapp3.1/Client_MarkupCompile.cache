@@ -5,16 +5,16 @@ winexe
 C#
 .cs
 C:\Users\zadro\source\repos\University2\Client\obj\Debug\netcoreapp3.1\
-Client_czt0nfok_wpftmp
+Client_qndz35cg_wpftmp
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\zadro\source\repos\University2\Client\App.xaml
-11151548125
-
-8-1767419346
-2091556080915
-MainWindow.xaml;
+17-865267725
+1-301770927
+74-2090516025
+241-2008652990
+Dialogs\NotificationDialog.xaml;Views\AddGroup.xaml;Views\AddStudent.xaml;Views\AddSubject.xaml;Views\AddTeacher.xaml;Views\ForgotPassword.xaml;Views\GroupPage.xaml;Views\GroupsPage.xaml;Views\LoginPage.xaml;Views\MainPage.xaml;Views\NewPassword.xaml;Views\Shell.xaml;Views\StudentPage.xaml;Views\StudentsPage.xaml;Views\SubjectsPage.xaml;Views\TeacherPage.xaml;Views\TeachersPage.xaml;
 
 True
 
