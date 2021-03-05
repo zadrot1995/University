@@ -28,6 +28,8 @@ namespace University.Domain
 
         public DbSet<Teacher> Teachers { get; set; }
 
+       
+
     }
 
 }

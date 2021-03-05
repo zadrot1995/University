@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Core.Commands;
+using Core.Commands.Students;
 using Core.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using University.Core.Helpers;
 
-namespace University.Api.Controllers
+namespace API.Controllers
 {
-    //[Authorize]
     [Route("api/[controller]")]
-    public class TeacherController : ControllerBase
+    [ApiController]
+    public class StudentController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public TeacherController(IMediator mediator)
+        public StudentController(IMediator mediator)
         {
             this.mediator = mediator;
         }
@@ -25,7 +25,7 @@ namespace University.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync([FromQuery] int page = 0, [FromQuery] int size = Constants.PageSize)
         {
-            var query = new GetAllTeacherQuery
+            var query = new GetAllStudentsQuery
             {
                 Page = page,
                 Size = size
@@ -34,37 +34,40 @@ namespace University.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{teacherId}")]
-        public async Task<IActionResult> GetTeacherByIdAsync(int teacherId)
+        [HttpGet("{studentId}")]
+        public async Task<IActionResult> GetStudentByIdAsync(int studentId)
         {
-
-            var query = new GetTeacherByIdQuery(teacherId);
+            var query = new GetStudentByIdQuery(studentId);
             var result = await mediator.Send(query);
+            if(result==null)
+            {
+                return NotFound();
+            }
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTeacherAsync([FromBody] CreateTeacherCommand command)
+        public async Task<IActionResult> CreateStudentAsync([FromBody] CreateStudentCommand command)
         {
             var result = await mediator.Send(command);
             return Ok(result);
         }
 
-        [HttpDelete("{teacherId}")]
-        public async Task<IActionResult> DeleteTeacherAsync(int teacherId)
+        [HttpDelete("{studentId}")]
+        public async Task<IActionResult> DeleteStudentAsync(int studentId)
         {
-            var command = new DeleteTeacherCommand
+            var command = new DeleteStudentCommand
             {
-                Id = teacherId
+                Id = studentId
             };
             await mediator.Send(command);
             return NoContent();
         }
 
-        [HttpPut("{teacherId}")]
-        public async Task<IActionResult> UpdateTeacherAsync(int teacherId, [FromBody] UpdateTeacherCommand command)
+        [HttpPut("{studentId}")]
+        public async Task<IActionResult> UpdateStudentAsync(int studentId, [FromBody] UpdateStudentCommand command)
         {
-            command.Id = teacherId;
+            command.Id = studentId;
             var result = await mediator.Send(command);
             return Ok(result);
         }
