@@ -1,7 +1,0 @@
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin.csprojAssemblyReference.cache
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\App.g.cs
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin_Content.g.cs
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin_MarkupCompile.cache
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin.AssemblyInfoInputs.cache
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin.AssemblyInfo.cs
-C:\Users\zadro\source\repos\University2\ClientAdmin\obj\Debug\netcoreapp3.1\ClientAdmin.csproj.CoreCompileInputs.cache
